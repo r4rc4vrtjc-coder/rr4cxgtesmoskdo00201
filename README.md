@@ -14,39 +14,30 @@ const searchMap = {
 
 function loadSearchResults(query, engine) {
   const baseUrl = searchMap[engine] || searchMap.duckduckgo;
-  const encodedQuery = encodeURIComponent(query.trim());
+  const trimmed = query.trim();
 
-  if (!encodedQuery) {
+  if (!trimmed) {
     resultsFrame.src = 'about:blank';
     return;
   }
 
-  resultsFrame.src = `${baseUrl}${encodedQuery}`;
+  resultsFrame.src = `${baseUrl}${encodeURIComponent(trimmed)}`;
 }
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const selectedEngine = engineSelect.value;
-  const query = searchInput.value;
-  loadSearchResults(query, selectedEngine);
+  loadSearchResults(searchInput.value, engineSelect.value);
 });
 
 engineSelect.addEventListener('change', () => {
-  const query = searchInput.value.trim();
-  if (query) {
-    loadSearchResults(query, engineSelect.value);
-  }
-});
-
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    searchForm.requestSubmit();
+  if (searchInput.value.trim()) {
+    loadSearchResults(searchInput.value, engineSelect.value);
   }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  searchInput.focus();
   const defaultQuery = 'GitHub';
   searchInput.value = defaultQuery;
   loadSearchResults(defaultQuery, engineSelect.value);
+  searchInput.focus();
 });

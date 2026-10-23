@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Built-In Search</title>
+    <title>MO! Search</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="stars" aria-hidden="true"></div>
+
     <div class="app">
-      <header class="topbar">
-        <div class="brand">Built-In Search</div>
-        <div class="settings">
-          <label for="engineSelect">Search engine</label>
+      <div class="title-wrap">
+        <div class="title">MO!</div>
+      </div>
+
+      <form id="searchForm" class="search-panel" autocomplete="off">
+        <div class="engine-select-wrap">
+          <label for="engineSelect" class="sr-only">Search engine</label>
           <select id="engineSelect" aria-label="Choose search engine">
             <option value="duckduckgo" selected>DuckDuckGo</option>
             <option value="google">Google</option>
@@ -21,29 +26,26 @@
             <option value="wikipedia">Wikipedia</option>
           </select>
         </div>
-      </header>
 
-      <main class="content">
-        <form id="searchForm" class="search-form">
+        <div class="search-box">
           <input
             id="searchInput"
             type="text"
-            placeholder="Search the web..."
+            placeholder="Search..."
             aria-label="Search"
-            autocomplete="off"
           />
-          <button type="submit">Search</button>
-        </form>
-
-        <div class="results-wrap">
-          <iframe
-            id="resultsFrame"
-            title="Search results"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy"
-          ></iframe>
+          <button type="submit" aria-label="Submit search">Search</button>
         </div>
-      </main>
+      </form>
+
+      <div class="results-wrap">
+        <iframe
+          id="resultsFrame"
+          title="Search results"
+          referrerpolicy="strict-origin-when-cross-origin"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
 
     <script src="script.js"></script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Built-In Search</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">Built-In Search</div>
+        <div class="settings">
+          <label for="engineSelect">Search engine</label>
+          <select id="engineSelect" aria-label="Choose search engine">
+            <option value="duckduckgo" selected>DuckDuckGo</option>
+            <option value="google">Google</option>
+            <option value="bing">Bing</option>
+            <option value="brave">Brave</option>
+            <option value="ecosia">Ecosia</option>
+            <option value="wikipedia">Wikipedia</option>
+          </select>
+        </div>
+      </header>
+
+      <main class="content">
+        <form id="searchForm" class="search-form">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search the web..."
+            aria-label="Search"
+            autocomplete="off"
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        <div class="results-wrap">
+          <iframe
+            id="resultsFrame"
+            title="Search results"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
